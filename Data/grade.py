@@ -129,16 +129,16 @@ grades = {'overall': 0.0,
 'AFST': { 'overall': 0.0 } }}
 #College data borrowed from https://courses.engr.illinois.edu/cs19920.05/sp20.016/discovery/gpa_of_every_course_at_illinois/?a=fbcs
 
-def findmajor(grades, program):
+def findmajor(grades, major):
 	for college in list(grades):
-		if program in college:
-			yield college[program]
+		if major in college:
+			return college[program]
 
 def findclass(grades, num):
 	for college in list(grades):
-		for program in list(college):
-			if num in program:
-				yield program[num]
+		for major in list(college):
+			if num in major:
+				return major[num]
 				
 #print grades
 #For each file
@@ -148,4 +148,5 @@ os.chdir("grades")
 for file in glob.glob("*.csv"):
     filenames.append(file)
 
-print findmajor(grades, 'CS')
+x = findmajor(grades, 'CS')
+print x
