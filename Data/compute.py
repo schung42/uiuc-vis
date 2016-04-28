@@ -30,17 +30,13 @@ for i in range(len(filenames)):
     num = filenums[i]
     for i in range(len(full)):
         if (full[i:i+6] == str(num)):
-            for j in range(2000):
-                if(full[i+j:i+j+6] == str(num)):
-                    if(full[i+2:i+6]!= ',,,,'):
+            for j in range(3000):
+                if(full[i+j:i+j+6] == str(num) and full[i+j:i+j+6] != ''''''''):
+                    if(full[i+2:i+6]!= ',,,,' and full[i:i+j] != '' ):
                         unclean_array.append(full[i:i+j-1])
                         print full[i:i+j-1]
                         fout.write(full[i:i+j-1])
-                if(j == 1999):
-                    if(full[i+2:i+6]!= ',,,,'):
-                        unclean_array.append(full[i:i+2000])
-                        print full[i:i+2000]
-                        fout.write(full[i:i+2000])
+
 print "up to date"
 
 # print "array finished"
