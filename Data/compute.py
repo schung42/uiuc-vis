@@ -6,6 +6,7 @@ for file in glob.glob("*.csv"):
     filenames.append(file)
 print filenames
 
+fout = open("../out2.csv", "a")
 
 filenums = []
 for i in filenames:
@@ -22,7 +23,30 @@ for i in filenames:
     filenums.append(prefix)
 print filenums
 
+print "time to create a new list!"
+unclean_array = []
 for i in range(len(filenames)):
     full = open('../csvs/' + filenames[i], 'r').read()
     num = filenums[i]
     for i in range(len(full)):
+        if (full[i:i+6] == str(num)):
+            for j in range(3000):
+                if(full[i+j:i+j+6] == str(num) and full[i+j:i+j+6] != ''''''''):
+                    if(full[i+2:i+6]!= ',,,,' and full[i:i+j] != '' ):
+                        unclean_array.append(full[i:i+j-1])
+                        print full[i:i+j-1]
+                        fout.write(full[i:i+j-1])
+
+print "up to date"
+
+# print "array finished"
+# array_of_arrays = []
+# for i in unclean_array:
+#     newarr = []
+#     oldcommaindex = 0
+#     for j in range(len(i)):
+#         if(i[j] == ','):
+#             newarr.append(i[oldcommaindex:j])
+#             oldcommaindex = j+1
+#         array_of_arrays.append(newarr)
+#     print newarr
